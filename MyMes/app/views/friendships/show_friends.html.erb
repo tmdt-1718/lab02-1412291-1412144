@@ -1,0 +1,10 @@
+<h1>Your friends</h1>
+<div>
+  <% if @friendships %>
+    <% @friendships.each do |friendship| %>
+      <p><%= friendship.friend.email %></p>
+      <%= link_to "Unfriend", friendship_path(id: friendship.id), method: :delete %>
+    <br></br>
+    <% end %>
+  <% end %>
+</div>

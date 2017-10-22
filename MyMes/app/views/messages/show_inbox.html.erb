@@ -1,0 +1,14 @@
+<h1>INBOX</h1>
+<%= link_to 'New message', root_path %>
+| <%= link_to 'All users', friendships_path %>
+| <%= link_to 'Your friends', friendships_friends_path %>
+
+<div>
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <hr>
+      <h2><%= massage.id %></h2>
+      <p><%= massage.text %></p>
+    <% end %>
+  <% end %>
+</div>
