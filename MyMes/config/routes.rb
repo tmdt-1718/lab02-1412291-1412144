@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'messages/inbox', to: 'messages#show_inbox'
   get 'friendships/friends', to: 'friendships#show_friends'
   devise_for :users, controllers: {
-      sessions: 'users/sessions'
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
   }
   resources :friendships
   resources :messages

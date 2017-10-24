@@ -15,4 +15,4 @@
 //= require_tree .
 $(document).on('turbolinks:load', function(){
 
-}
+});
