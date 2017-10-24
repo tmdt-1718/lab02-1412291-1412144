@@ -1,3 +1,4 @@
 class Receipt < ApplicationRecord
-  belongs_to :massage, optional: true
+  belongs_to :message, optional: true
+  belongs_to :receiver, class_name: "Message"
 end

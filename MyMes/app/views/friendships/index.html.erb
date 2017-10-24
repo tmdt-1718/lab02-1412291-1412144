@@ -2,12 +2,15 @@
 <div>
   <% if @users %>
     <% @users.each do |user| %>
-      <p><%= user.email %></p>
-        <% if @friendships.pluck(:friend_id).include?(user.id) %>
-          <%= link_to "Unfriend", friendship_path(id: @friendships.where(friend_id: user.id).select(:id).first ), method: :delete %>
-        <% else %>
-          <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post %>
-        <% end %>
+      <%if user.id != current_user.id%>
+          <p><%= user.email %></p>
+          <% if @friendships.pluck(:friend_id).include?(user.id) %>
+            <%= link_to "Unfriend", friendship_path(id: @friendships.where(friend_id: user.id).select(:id).first ), method: :delete %>
+          <% else %>
+            <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post %>
+          <% end %>
+          <div>--------------------------------------</div>
+        <%end%>
     <% end %>
   <% end %>
 </div>

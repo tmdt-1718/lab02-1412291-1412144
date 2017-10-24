@@ -1,0 +1,6 @@
+<% if @receiver.receiver_id == current_user.id %>
+  <h1>Message</h1>
+  <div>From: <%= @receiver.message.sender.email %></div>
+  <p> Sent at: <%= @receiver.message.created_at %></p>
+  <strong><%= @receiver.message.content %></strong>
+<% end %>
