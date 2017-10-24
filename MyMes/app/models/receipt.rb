@@ -1,3 +1,3 @@
 class Receipt < ApplicationRecord
-  belongs_to :massage
+  belongs_to :massage, optional: true
 end
