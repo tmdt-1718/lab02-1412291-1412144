@@ -1,0 +1,19 @@
+<h1>SENT</h1>
+<div>
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <strong><%= message.content %></strong>
+      <p>Sent at: <%= message.created_at %></p>
+      <div>
+        <p>To:</p>
+            <% message.receipts.each do |receiver| %>
+                <p><%= User.where(id: receiver.receiver_id).first.email %></p>
+                <% if receiver.read_at %>
+                  <p> Read at: <%= receiver.read_at %></p>
+                <%end%>
+            <%end%>
+      </div>
+      <p>--------------------------------------------</p>
+    <%end%>
+  <% end %>
+</div>
