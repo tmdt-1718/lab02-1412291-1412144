@@ -12,7 +12,12 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require ./template/jquery.min.js
+//= require ./template/bootstrap.min.js
+//= require ./template/skel.min.js
 //= require_tree .
+
+//
 $(document).on('turbolinks:load', function(){
 
 });

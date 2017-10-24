@@ -1,20 +1,64 @@
+
+<div class="table-container col-12 col-lg-12 col-md-12 col-sm-12">
+
+  <table class="table table-filter ">
+    <tbody>
+    <% if @receivers %>
+        <% @receivers.each do |receiver| %>
+            <tr data-status="pagado" class="<%= receiver.read_at ? 'selected' : '' %>" data-href="<%= message_path(id: receiver.message.id) %>">
+              <td>
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                  </a>
+                  <div class="media-body">
+                    <span class="media-meta pull-right"></span>
+                    <h4 class="title">
+                      <%= receiver.message.sender.email%>
+                    </h4>
+                    <% if receiver.read_at %>
+                        <p class="summary"><%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'))%></p>
+                    <%else%>
+                        <p class="summary"><strong><%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'))%></strong></p>
+                    <% end %>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+
+
+</div>
+<script>
+    $(document).ready(function () {
+
+
+        $('.btn-filter').on('click', function () {
+            var $target = $(this).data('target');
+            if ($target != 'all') {
+                $('.table tr').css('display', 'none');
+                $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+            } else {
+                $('.table tr').css('display', 'none').fadeIn('slow');
+            }
+        });
+        $('tr').on('click',function () {
+            var href = $(this).attr("data-href");
+            console.log(href);
+            window.location.href=href;
+
+        });
+    });
+
+</script>
+
 <h1>INBOX</h1>
 <%= link_to 'New message', new_message_path %>
 | <%= link_to 'Sent', messages_sent_path %>
 | <%= link_to 'All users', friendships_path %>
 | <%= link_to 'Your friends', friendships_friends_path %>
 
-<div>
-  <% if @receivers %>
-    <% @receivers.each do |receiver| %>
-      <br></br>
-      <% if receiver.read_at %>
-        <p><%= receiver.message.content %></p>
-      <%else%>
-        <strong><%= receiver.message.content %></strong>
-      <%end%>
-      <p>From: <%= receiver.message.sender.email%></p>
-      <%= link_to "Read", message_path(id: receiver.message.id), method: :get %>
-    <% end %>
-  <% end %>
-</div>

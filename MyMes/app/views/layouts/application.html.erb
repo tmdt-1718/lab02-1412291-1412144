@@ -3,16 +3,94 @@
   <head>
     <title>MyMes</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'%>
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'%>
-    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' %>
-    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+          <ul class="icons">
+            <li><a href="#" class="icon fa-pencil-square-o" data-toggle="tooltip" data-placement="bottom" title="Compose"><span class="label">Compose</span></a></li>
+            <li><a href="#" class="icon fa-envelope-open-o" data-toggle="tooltip" data-placement="bottom" title="Sent Message"><span class="label">Sent Mail</span></a></li>
+            <li><a href="#" class="icon fa-users" data-toggle="tooltip" data-placement="bottom" title="Friends"><span class="label">Your Friends</span></a></li>
+
+          </ul>
+        </header>
+
+        <!-- Banner -->
+        <section id="banner">
+
+            <!--<header>
+              <h1>Hi, I’m Editorial<br />
+                by HTML5 UP</h1>
+              <p>A free and fully responsive site template</p>
+            </header>
+            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button big">Learn More</a></li>
+            </ul>-->
+            <%= yield %>
+
+        </section>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="generic.html">Generic</a></li>
+            <li><a href="elements.html">Elements</a></li>
+            <li><a href="inbox.html">Inbox (3)</a> </li>
+            <li><a href="sentmail.html">Sent Mail</a></li>
+            <li><a href="compose.html">Compose Mail</a> </li>
+          </ul>
+        </nav>
+
+
+
+        <!-- Section -->
+
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; 1004 Team - Lab02 EC2017 HCMUS<br>1412291 - Lu Tam Long<br>1412144 - Do Truong Hai</p>
+
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
   </body>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
 </html>
