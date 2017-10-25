@@ -3,8 +3,8 @@
 **Name of your app** là một bài tập môn TMDT. Ứng dụng cho phép người dùng gửi tin nhắn (email) cho người dùng khác.
 
 Thành viên:
-* [x] **MSSV1** Tên sinh viên 1 (tên tài khoản github)
-* [x] **MSSV2** Tên sinh viên 2 (tên tài khoản github)
+* [x] **1412144** Đỗ Trường Hải(1412144)
+* [x] **1412291** Lữ Tâm Long (1412291)
 
 URL: **URL hosting của bài tập**
 
