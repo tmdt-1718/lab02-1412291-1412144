@@ -1,4 +1,3 @@
-
 <div class="table-container col-12 col-lg-12 col-md-12 col-sm-12">
 
   <table class="table table-filter ">
@@ -17,35 +16,22 @@
                       <%= receiver.message.sender.email%>
                     </h4>
                     <% if receiver.read_at %>
-                        <p class="summary"><%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'))%></p>
+                        <%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'),class: "sumary")%>
                     <%else%>
-                        <p class="summary"><strong><%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'))%></strong></p>
+                        <strong><%= simple_format(truncate(receiver.message.content,length: 50, separator: ' ',omission: '...'),class:"sumary")%></strong>
                     <% end %>
                   </div>
                 </div>
-
               </td>
             </tr>
         <% end %>
     <% end %>
     </tbody>
   </table>
-
-
 </div>
 <script>
     $(document).ready(function () {
 
-
-        $('.btn-filter').on('click', function () {
-            var $target = $(this).data('target');
-            if ($target != 'all') {
-                $('.table tr').css('display', 'none');
-                $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
-            } else {
-                $('.table tr').css('display', 'none').fadeIn('slow');
-            }
-        });
         $('tr').on('click',function () {
             var href = $(this).attr("data-href");
             console.log(href);
@@ -56,9 +42,5 @@
 
 </script>
 
-<h1>INBOX</h1>
-<%= link_to 'New message', new_message_path %>
-| <%= link_to 'Sent', messages_sent_path %>
-| <%= link_to 'All users', friendships_path %>
-| <%= link_to 'Your friends', friendships_friends_path %>
+
 

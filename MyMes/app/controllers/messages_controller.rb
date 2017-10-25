@@ -1,17 +1,22 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   def show_inbox
+    @title = "INBOX"
     @receivers = Receipt.where(receiver_id: current_user.id)
   end
   def show_sent
+    @title = "SENT MESSAGE"
     @messages = Message.where(sender_id: current_user.id)
   end
 
   def new
+    @title = "COMPOSE MESSAGE"
     @message = Message.new
     @friendships = current_user.friendships
   end
 
   def show
+    @title = "MESSAGE CONTENT"
     @message = Message.find(params[:id])
     @receiver = Receipt.where(message_id: params[:id],receiver_id: current_user.id).first
     receipt = Receipt.where(message_id: params[:id],receiver_id: current_user.id).select(:read_at).first

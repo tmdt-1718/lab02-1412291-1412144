@@ -1,19 +1,42 @@
-<h1>SENT</h1>
-<div>
-  <% if @messages %>
-    <% @messages.each do |message| %>
-      <strong><%= message.content %></strong>
-      <p>Sent at: <%= message.created_at %></p>
-      <div>
-        <p>To:</p>
+<div class="table-container col-12 col-lg-12 col-md-12 col-sm-12">
+  <table class="table table-filter ">
+    <tbody>
+    <% if @messages %>
+        <% @messages.each do |message| %>
             <% message.receipts.each do |receiver| %>
-                <p><%= User.where(id: receiver.receiver_id).first.email %></p>
-                <% if receiver.read_at %>
-                  <p> Read at: <%= receiver.read_at %></p>
-                <%end%>
+              <tr data-status="pagado">
+                <td>
+                  <div class="media">
+                    <a href="#" class="pull-left">
+                      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                    </a>
+                    <div class="media-body">
+                      <span class="media-meta pull-right"><%= message.created_at %></span>
+                      <h4 class="title">
+                        <%= User.where(id: receiver.receiver_id).first.email %>
+                      </h4>
+                      <% if receiver.read_at %>
+                          <%= simple_format(truncate(message.content,length: 50, separator: ' ',omission: '...'),class: "sumary")%>
+                      <%else%>
+                          <strong><%= simple_format(truncate(message.content,length: 50, separator: ' ',omission: '...'),class:"sumary")%></strong>
+                      <% end %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
             <%end%>
-      </div>
-      <p>--------------------------------------------</p>
-    <%end%>
-  <% end %>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
 </div>
+<script>
+    $(document).ready(function () {
+
+
+    });
+
+</script>
+
+
+

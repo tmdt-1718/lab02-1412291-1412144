@@ -1,5 +1,7 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
   def index
+    @title = "FIND FRIENDS"
     @users = User.all
     @friendships = current_user.friendships.all
   end
@@ -11,6 +13,7 @@ class FriendshipsController < ApplicationController
   end
 
   def show_friends
+    @title = "FRIENDS"
     @friendships = current_user.friendships
   end
 
